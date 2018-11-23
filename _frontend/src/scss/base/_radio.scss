@@ -1,74 +1,56 @@
-[type='radio'] {
-  $normal: palette(grey);
-  $highlight: palette(grey, dark);
+.radio {
+  display: block;
+  background-color: palette(grey, light);
+  padding: 0.15em 0.5em;
+  border-radius: 1em;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+  margin: 0.25em 0;
+  transition: background-color $s, color $s;
 
-  &:checked,
-  &:not(:checked) {
+  input {
+    vertical-align: text-bottom;
     cursor: pointer;
-    left: -9999px;
-    position: absolute;
-
-    + .lbl {
-      color: $normal;
-      cursor: pointer;
-      display: inline-block;
-      font-size: inherit;
-      margin: $gutter/4 0;
-      padding-left: 2em;
-      position: relative;
-      transition: color $s;
-
-      &::before {
-        background: transparent;
-        border: 2px solid $normal;
-        border-radius: 100%;
-        content: '';
-        height: 1em;
-        left: 0;
-        position: absolute;
-        top: 0;
-        transition: all $s;
-        width: 1em;
-      }
-
-      &::after {
-        background: $highlight;
-        border-radius: 100%;
-        content: '';
-        height: 0.6em;
-        left: 0.35em;
-        position: absolute;
-        top: 0.35em;
-        transition: all $s;
-        width: 0.6em;
-      }
-    }
   }
 
-  &:not(:checked) {
-    + .lbl {
-      &::after {
-        opacity: 0;
-        transform: scale(0);
-      }
-    }
+  img {
+    height: 1em;
+    width: auto;
+    vertical-align: text-bottom;
+    letter-spacing: 0;
   }
 
-  &:checked,
+  em {
+    font-variant: none;
+    font-size: 0.85em;
+  }
+
   &:hover {
-    + .lbl {
-      color: $highlight;
-
-      &::before {
-        border-color: $highlight;
-      }
-    }
+    color: #fff;
+    background-color: palette(grey, medium);
   }
 
-  &:checked {
-    &::after {
-      opacity: 1;
-      transform: scale(1);
+  .article:nth-child(even) & {
+    background-color: #fff;
+
+    &:hover {
+      color: #fff;
+      background-color: palette(grey, medium);
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .radio {
+    display: inline-block;
+    margin: 0 0.35em 0 0;
+
+    &:last-of-type {
+      margin-right: 0;
     }
   }
 }

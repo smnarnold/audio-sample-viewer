@@ -9,18 +9,19 @@ class App {
       colorPicker: document.getElementById('colorPicker'),
       title: document.getElementById('title'),
       description: document.getElementById('description'),
-      stop: document.getElementById('stop'),
+      recordRadios: document.forms.form.record,
     };
 
     this.dimension = 1080;
     this.fps = 30;
     this.gutter = 10;
+    this.record = false;
 
     this.capturer = new CCapture({
       format: 'webm',
       framerate: this.fps,
     });
-    
+
     this.ctx = this.dom.canvas.getContext('2d');
     this.imageObj = new Image();
 
@@ -42,16 +43,16 @@ class App {
       image: {
         original: {
           width: 0,
-          height: 0
+          height: 0,
         },
         width: this.dimension,
-        height: 0
+        height: 0,
       },
       content: {
         margin: 0,
         height: 0,
-        textHeight: 0
-      }
+        textHeight: 0,
+      },
     };
   }
 
@@ -77,7 +78,10 @@ class App {
     this.dom.colorPicker.addEventListener('change', (e) => this.setBackgroundColor(e));
     this.dom.title.addEventListener('keyup', (e) => this.setTitle(e));
     this.dom.description.addEventListener('keyup', (e) => this.setDescription(e));
-    this.dom.stop.addEventListener('click', () => this.stop());
+    this.dom.audio.addEventListener('ended', () => this.stop());
+    Array.prototype.forEach.call(this.dom.recordRadios, radio => {
+      radio.addEventListener('change', () => this.record = this.dom.recordRadios.value);
+    });
   }
 
   setContent() {
@@ -104,11 +108,12 @@ class App {
         this.imageObj.onload = (img) => {
           this.canvas.image.original.width = img.path[0].width;
           this.canvas.image.original.height = img.path[0].height;
-          this.canvas.image.height = this.canvas.width / this.canvas.image.original.width * this.canvas.image.original.height;
-          
+          this.canvas.image.height =
+            (this.canvas.width / this.canvas.image.original.width) * this.canvas.image.original.height;
+
           this.setContent();
           this.drawBasic();
-        }
+        };
       }
     };
   }
@@ -119,7 +124,7 @@ class App {
   }
 
   setDescription(e) {
-    this.canvas.description.value = e.srcElement.value.toUpperCase()
+    this.canvas.description.value = e.srcElement.value.toUpperCase();
     this.drawBasic();
   }
 
@@ -132,8 +137,10 @@ class App {
   }
 
   stop() {
-    this.capturer.stop();
-    this.capturer.save();
+    if (this.record) {
+      this.capturer.stop();
+      this.capturer.save();
+    }
   }
 
   start() {
@@ -152,7 +159,7 @@ class App {
 
     this.bar = {
       width: Math.round(this.canvas.width / this.bufferLength),
-      height: 0
+      height: 0,
     };
 
     this.startAnimating();
@@ -160,7 +167,9 @@ class App {
 
   startAnimating() {
     this.draw();
-    this.capturer.start();
+    if(this.record) {
+      this.capturer.start();
+    }
     this.dom.audio.play();
   }
 
@@ -170,7 +179,9 @@ class App {
     this.drawBasic();
     this.drawBars();
 
-    this.capturer.capture(this.dom.canvas);
+    if (this.record) {
+      this.capturer.capture(this.dom.canvas);
+    }
   }
 
   drawBasic() {
@@ -190,7 +201,12 @@ class App {
 
     // Description
     this.ctx.font = `${this.canvas.description.size}px Helvetica`;
-    this.ctx.fillText(this.canvas.description.value, this.canvas.halfWidth, this.canvas.description.y, this.canvas.width);
+    this.ctx.fillText(
+      this.canvas.description.value,
+      this.canvas.halfWidth,
+      this.canvas.description.y,
+      this.canvas.width
+    );
   }
 
   drawBars() {

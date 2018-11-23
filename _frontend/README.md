@@ -1,4 +1,4 @@
-# Leepsum - Frontend Structure
+# Insta - Frontend Structure
 
 ## Requirements
 - [NodeJS 6.x LTS](https://nodejs.org/en/)

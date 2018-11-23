@@ -10,6 +10,7 @@ $gutter: 20px;
 $palettes: (
   grey: (
     light: #c8c8c8,
+    medium: #414141,
     base: #7f7f7f,
     dark: #030301,
   ),
@@ -22,7 +23,6 @@ $palettes: (
 );
 
 $fonts: (
-  heading: #{ 'SL-SidLeeExtraBold', sans-serif },
   sans-serif: #{ 'Work Sans', sans-serif },
   serif: #{ Georgia, Times, serif }
 );

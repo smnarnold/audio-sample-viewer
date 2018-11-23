@@ -60,12 +60,6 @@ input[type='number'] {
   padding: $gutter/2 $gutter;
 }
 
-.article {
-  p {
-    text-indent: 2em;
-  }
-}
-
 @media (min-width: $sm) {
   input[type='text'],
   input[type='number'] {
