@@ -1,0 +1,29 @@
+.btn {
+  background-color: palette(grey);
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all $s ease-in-out;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    background-color: lighten(palette(grey, dark), 10%);
+  }
+}
+
+@media (min-width: $sm) {
+  .btn {
+    max-width: 200px;
+  }
+}

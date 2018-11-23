@@ -1,0 +1,9 @@
+// Fonts
+@function font($style: 'sans-serif') {
+  @return map-get($fonts, $style);
+}
+
+// Colors
+@function palette($palette, $tone: 'base') {
+  @return map-get(map-get($palettes, $palette), $tone);
+}

@@ -1,0 +1,91 @@
+.main-options {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  justify-content: space-between;
+  width: 100%;
+
+  .cell {
+    flex-basis: 100%;
+    width: 100%;
+
+    &.input,
+    &.button {
+      flex-basis: 50%;
+      margin: $gutter/2 0 0;
+      width: 50%;
+    }
+
+    &.input {
+      order: 5;
+      padding: 0 $gutter/4 0 0;
+    }
+
+    &.radios {
+      display: flex;
+      flex-basis: 100%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &.radio {
+      flex-basis: 50%;
+      width: 50%;
+    }
+
+    &.button {
+      order: 6;
+      padding: 0 0 0 $gutter/4;
+      text-align: right;
+    }
+  }
+}
+
+@media (min-width: $sm) {
+  .main-options {
+    .cell {
+      &.radio {
+        flex-basis: auto;
+        width: auto;
+      }
+    }
+  }
+}
+
+@media (min-width: $md) {
+  .main-options {
+    .cell {
+      flex-basis: auto;
+      width: auto;
+
+      &.input,
+      &.button {
+        flex-basis: 15%;
+        margin: 0;
+        width: 15%;
+      }
+
+      &.input {
+        order: 0;
+      }
+
+      &.radios {
+        flex-basis: 70%;
+        justify-content: space-around;
+        width: 70%;
+      }
+
+      &.radio {
+        flex-basis: auto;
+        padding: 0 $gutter;
+        width: auto;
+      }
+
+      &.button {
+        order: 6;
+      }
+    }
+  }
+}

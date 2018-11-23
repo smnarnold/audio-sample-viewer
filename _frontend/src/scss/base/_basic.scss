@@ -1,0 +1,43 @@
+$dimension: 1080px;
+$scale: 0.55555555555;
+
+#thefile,
+#stop {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+#canvas {
+  $x: 0;
+  $y: #{$dimension * $scale / 2};
+
+  position: absolute;
+  left: $y;
+  top: $y;
+  width: $dimension;
+  height: $dimension;
+  transform: translate3d(-50%, -50%, 0) scale($scale);
+}
+
+.form {
+  $x: round($dimension * $scale);
+
+  position: absolute;
+  top: 0;
+  left: $x;
+  width: calc(100% - #{$x});
+  margin: 0 auto;
+  padding: 20px;
+}
+
+audio {
+  position: relative;
+  width: 100%;
+  margin: 10px 0;
+}
+
+input[type='text'] {
+  width: 50%;
+}

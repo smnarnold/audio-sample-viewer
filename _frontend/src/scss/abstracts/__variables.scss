@@ -1,0 +1,28 @@
+$s: 0.3s;
+
+$sm: 568px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$gutter: 20px;
+
+$palettes: (
+  grey: (
+    light: #c8c8c8,
+    base: #7f7f7f,
+    dark: #030301,
+  ),
+  green: (
+    base: #00d9c0
+  ),
+  pink: (
+    base: #ff4365
+  )
+);
+
+$fonts: (
+  heading: #{ 'SL-SidLeeExtraBold', sans-serif },
+  sans-serif: #{ 'Work Sans', sans-serif },
+  serif: #{ Georgia, Times, serif }
+);

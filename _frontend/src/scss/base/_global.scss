@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font: 400 16px font(sans-serif);
+  height: 100%;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid palette(grey, dark);
+  box-sizing: content-box;
+  height: 0;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  opacity: 0.1;
+  overflow: visible;
+}
+
+p {
+  margin: 0 0 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+input[type='text'],
+input[type='number'] {
+  border: solid 2px palette(grey);
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  padding: 0.5em 1em;
+  text-align: center;
+  transition: border $s;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    border: solid 2px palette(grey, dark);
+    outline: none;
+  }
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 900px;
+  padding: $gutter/2 $gutter;
+}
+
+.article {
+  p {
+    text-indent: 2em;
+  }
+}
+
+@media (min-width: $sm) {
+  input[type='text'],
+  input[type='number'] {
+    max-width: 200px;
+  }
+}
+
+@media (min-width: $md) {
+  .wrapper {
+    padding: $gutter * 2 $gutter;
+  }
+}
